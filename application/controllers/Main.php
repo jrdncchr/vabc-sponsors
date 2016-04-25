@@ -6,18 +6,24 @@ class Main extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
+        $sponsor = $this->session->userdata('sponsor');
+        if(null == $sponsor) {
+            redirect('/');
+        }
     }
 
 	public function index() {
-		$this->login();
+        $this->dashboard();
 	}
 
-    public function login() {
-        $this->_render('login');
+    public function dashboard() {
+        $this->_renderL('main/dashboard');
     }
 
-    public function register() {
-        $this->_render('register');
+    public function logout() {
+        $this->session->sess_destroy();
+        redirect('/');
     }
+
 
 }

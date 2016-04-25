@@ -18,7 +18,10 @@ class MY_Controller extends CI_Controller {
     public function __construct($logged = false)
     {
         parent::__construct();
+        $this->request_method = $_SERVER['REQUEST_METHOD'];
+
         $this->load->helper('url');
+        $this->load->library('session');
 
         $this->data['project'] = $this->project;
         $this->data['title'] = $this->title;
@@ -39,6 +42,21 @@ class MY_Controller extends CI_Controller {
         $data['content'] = $this->load->view($view, $data, true);
 
         $this->load->view('templates/skeleton', $data);
+    }
+
+    public function _renderL($view)
+    {
+        $this->data['css'] = $this->css;
+        $this->data['js'] = $this->js;
+        $this->data['bower'] = $this->bower;
+
+        $data['head'] = $this->load->view('templates/head', $this->data, true);
+        $data['sidenav'] = $this->load->view('templates/main/sidenav', $this->data, true);
+        $data['nav'] = $this->load->view('templates/main/nav', $this->data, true);
+        $data['footer'] = $this->load->view('templates/footer', $this->data, true);
+        $data['content'] = $this->load->view($view, $data, true);
+
+        $this->load->view('templates/main/skeleton', $data);
     }
 
 } 

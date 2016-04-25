@@ -14,8 +14,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li id="nav-login"><a href="<?php echo base_url() . "main/login"; ?>">LOGIN</a></li>
-                <li id="nav-register"><a href="<?php echo base_url() . "main/register"; ?>">REGISTRATION</a></li>
+                <li id="nav-login"><a href="<?php echo base_url() . "login"; ?>">LOGIN</a></li>
+                <li id="nav-register"><a href="<?php echo base_url() . "register"; ?>">REGISTRATION</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="http://www.voicesagainstbraincancer.org/"><i class="fa fa-home"></i> Return to HOME</a></li>
