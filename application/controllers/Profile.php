@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Main extends MY_Controller {
+class Profile extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -13,17 +13,7 @@ class Main extends MY_Controller {
     }
 
 	public function index() {
-        $this->dashboard();
+        $this->_renderL('profile/index');
 	}
-
-    public function dashboard() {
-        $this->_renderL('main/dashboard');
-    }
-
-    public function logout() {
-        $this->session->sess_destroy();
-        redirect('/');
-    }
-
 
 }

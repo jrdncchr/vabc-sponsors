@@ -2,7 +2,7 @@
 
 class MY_Controller extends CI_Controller {
 
-    protected $user;
+    protected $sponsor;
     protected $data;
 
     protected $css;
@@ -22,6 +22,11 @@ class MY_Controller extends CI_Controller {
 
         $this->load->helper('url');
         $this->load->library('session');
+
+        $this->sponsor = $this->session->userdata('sponsor');
+        if(null != $this->sponsor) {
+            $this->data['sponsor'] = $this->sponsor;
+        }
 
         $this->data['project'] = $this->project;
         $this->data['title'] = $this->title;
@@ -51,12 +56,12 @@ class MY_Controller extends CI_Controller {
         $this->data['bower'] = $this->bower;
 
         $data['head'] = $this->load->view('templates/head', $this->data, true);
-        $data['sidenav'] = $this->load->view('templates/main/sidenav', $this->data, true);
-        $data['nav'] = $this->load->view('templates/main/nav', $this->data, true);
+        $data['sidenav'] = $this->load->view('templates/logged/sidenav', $this->data, true);
+        $data['nav'] = $this->load->view('templates/logged/nav', $this->data, true);
         $data['footer'] = $this->load->view('templates/footer', $this->data, true);
         $data['content'] = $this->load->view($view, $data, true);
 
-        $this->load->view('templates/main/skeleton', $data);
+        $this->load->view('templates/logged/skeleton', $data);
     }
 
 } 

@@ -53,7 +53,10 @@ input, textarea, select {
 }
 
 .navbar li:hover {
+    text-decoration: none;
+    color: #000000;
     font-weight: bold;
+    background: rgba(255,255,255,0.5);
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
@@ -83,14 +86,21 @@ div.un-logged {
 
 .danero-box {
     background: white;
-    padding: 30px 15px;
+    padding: 15px 15px;
     box-shadow: 0 0 8px 0 rgba(0,0,0,0.2),   inset 0 0 1px 0 rgba(255,255,255,1);
-    margin:  20px auto;
+    margin:  10px auto;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
     -webkit-transition:all .3s ease-out;
     transition:all .3s ease-out;
+}
+
+.danero-box h2 {
+    font-size: 16px !important;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #435061;
 }
 
 /*
@@ -131,10 +141,25 @@ div.un-logged {
     -webkit-transition:all .3s ease-out;
     transition:all .3s ease-out;
 }
+
+.btn-vabc {
+    background: #fbbc05;
+    color: black;
+    border-color: #adadad;
+}
+
+.btn-vabc:hover {
+    background: #DCA817;
+}
+
+#vabc-content h2 {
+    font-weight: bold;
+    font-size: 18px;
+}
 /* Custom Bootstrap
  */
 .form-group label {
-    font-weight: normal;
+    font-weight: bold;
     font-size: 14px !important;
 }
 .alert {
@@ -150,6 +175,35 @@ div.un-logged {
 .form-control {
     border-radius: 0;
 }
+.panel-default {
+    background-color: #d3d3d3;
+    color: white;
+}
+.panel-primary {
+    background-color: #435061;
+    color: white;
+    border-color: #d3d3d3;
+    cursor: pointer;
+}
+.panel-primary:hover {
+    background-color: #fbbc05;
+    border-color: #d3d3d3;
+    color: #000000;
+}
+.modal-header {
+    background-color: #fbbc05;
+    border-color: #d3d3d3;
+    color: #000000;
+    /*border-top-left-radius: 5px;*/
+    /*border-top-right-radius: 5px;*/
+    border-top: 3px solid black;
+}
+.modal-title {
+    font-weight: bold;
+}
+/*.modal-footer {*/
+    /*border-top: none;*/
+/*}*/
 
 /* Customize Select2
  */
@@ -163,23 +217,6 @@ div.un-logged {
 .has-error .select2-selection {
     border: 1px solid #a94442;
     border-radius: 4px;
-}
-
-.panel-default {
-    background-color: #d3d3d3;
-    color: white;
-}
-
-.panel-primary {
-    background-color: #435061;
-    color: white;
-    border-color: #d3d3d3;
-    cursor: pointer;
-}
-.panel-primary:hover {
-    background-color: #fbbc05;
-    border-color: #d3d3d3;
-    color: #000000;
 }
 
 
@@ -246,21 +283,28 @@ div.un-logged {
 }
 
 .sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
+    text-indent: 10px;
+    line-height: 65px;
 }
 
+.sidebar-nav li a i {
+    font-size: 22px;
+}
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
     color: black;
+    font-size: 18px;
 }
 
 .sidebar-nav li a:hover, .sidebar-nav li a.active {
     text-decoration: none;
-    color: #fff;
+    color: #000000;
     font-weight: bold;
-    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a > .row:hover, .sidebar-nav li a.active > .row {
+    background: rgba(255,255,255,0.5);
 }
 
 .sidebar-nav li a:active,
@@ -269,15 +313,16 @@ div.un-logged {
 }
 
 .sidebar-nav > .sidebar-brand {
-    height: 70px;
-    font-size: 18px;
-    line-height: 60px;
+    height: 110px;
+    line-height: 100px;
 }
 
 .sidebar-nav > .sidebar-brand a {
+    text-align: center;
     text-decoration: none;
     color: #000000;
     font-weight: bold;
+    font-size: 22px;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
@@ -313,3 +358,30 @@ div.un-logged {
         margin-right: 0;
     }
 }
+
+/* dataTables */
+
+.dataTables_length, .dataTables_filter, .dataTables_info {
+    font-size: 12px;
+}
+
+.dataTables_paginate {
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.5;
+    padding: 1px 5px;
+}
+
+.dataTable tr {
+    text-align: center;
+    cursor: pointer;
+}
+
+
+tr.selected td {
+    background-color: #add8e6 !important;
+    border-top: 2px solid #000000 !important;
+    border-bottom: 2px solid #000000;
+}
+
+table.table { font-size: 14px !important; }

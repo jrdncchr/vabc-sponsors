@@ -16,7 +16,7 @@
 
         <div id="page-content-wrapper">
             <?php echo $nav; ?>
-            <section class="container-fluid" style="padding: 20px;">
+            <section id="vabc-content" class="container-fluid" style="padding: 20px;">
                 <?php echo $content; ?>
             </section>
         </div>

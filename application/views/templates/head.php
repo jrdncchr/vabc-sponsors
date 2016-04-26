@@ -10,17 +10,27 @@
 <link rel="stylesheet" href="<?php echo base_url() . 'bower_components/bootstrap/dist/css/bootstrap.min.css'; ?>" />
 <link rel="stylesheet" href="<?php echo base_url() . 'bower_components/font-awesome/css/font-awesome.min.css'; ?>" />
 <link rel="stylesheet" href="<?php echo base_url() . 'resources/css/html5-css-reset.css'; ?>" />
-
+<?php if(isset($sponsor)) { ?>
+    <link rel="stylesheet" href="<?php echo base_url() . 'bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css'; ?>" />
+<?php } ?>
+<link rel="stylesheet" href="<?php echo base_url() . 'bower_components/toastr/toastr.min.css'; ?>" />
 <link rel="stylesheet" href="<?php echo base_url() . 'resources/css/jquery.steps.css'; ?>" />
 <link rel="stylesheet" href="<?php echo base_url() . 'resources/css/bootstrap-switch.css'; ?>" />
 <link rel="stylesheet" href="<?php echo base_url() . 'resources/css/danero.css'; ?>" />
 
 <!-- Scripts -->
 <script src="<?php echo base_url() . 'bower_components/jquery/dist/jquery.min.js'; ?>"></script>
+<?php if(isset($sponsor)) { ?>
+    <script src="<?php echo base_url() . 'bower_components/datatables.net/js/jquery.dataTables.min.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js'; ?>"></script>
+    <script src="<?php echo base_url() . 'resources/js/fnReloadAjax.js'; ?>"></script>
+<?php } ?>
 <script src="<?php echo base_url() . 'bower_components/bootstrap/dist/js/bootstrap.min.js'; ?>"></script>
+<script src="<?php echo base_url() . 'bower_components/toastr/toastr.min.js'; ?>"></script>
 <script src="<?php echo base_url() . 'bower_components/jquery.steps/build/jquery.steps.min.js'; ?>"></script>
 <script src="<?php echo base_url() . 'bower_components/select2/dist/js/select2.min.js'; ?>"></script>
 <script src="<?php echo base_url() . 'resources/js/plugins/bootstrap-switch.min.js'; ?>"></script>
+<script src="<?php echo base_url() . 'resources/js/danero-validator.js'; ?>"></script>
 <script src="<?php echo base_url() . 'resources/js/danero.js'; ?>"></script>
 <script>
     var baseUrl = "<?php echo base_url(); ?>";

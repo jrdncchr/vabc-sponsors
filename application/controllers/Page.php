@@ -18,7 +18,7 @@ class Page extends MY_Controller {
             $this->load->model('sponsor_model');
             $result = $this->sponsor_model->login($auth);
             if($result['success']) {
-                redirect('main');
+                redirect('dashboard');
             } else {
                 $this->session->set_flashdata('error', $result['message']);
                 $this->_render('login');
@@ -30,6 +30,11 @@ class Page extends MY_Controller {
 
     public function register() {
         $this->_render('register');
+    }
+
+    public function logout() {
+        $this->session->sess_destroy();
+        redirect('/');
     }
 
     public function test() {
