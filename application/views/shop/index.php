@@ -1,50 +1,53 @@
 <!--<h2>Shop</h2>-->
 <div class="row">
     <div class="col-sm-4">
-        <div class="danero-box">
-            <?php if(isset($shop)) { ?>
-                <h2>Shop Details</h2>
-                <div class="form-group">
-                    <label>Total Sales</label>
-                    <p class="lead">$0.00</p>
-                </div>
-                <div class="form-group">
-                    <label>Name</label>
-                    <p><?php echo $shop->name; ?></p>
-                </div>
-                <div class="form-group">
-                    <label>Description</label>
-                    <p><?php echo $shop->description; ?></p>
-                </div>
-                <div class="form-group">
-                    <label>Status</label>
-                    <p><?php echo $shop->enabled ? '<span class="text-success">Enabled</span>' : '<span class="text-danger">Disabled</span>'; ?></p>
-                </div>
-                <div class="btn btn-block btn-default" data-toggle="modal" data-target="#shop-details-modal">Edit Shop Details</div>
-            <?php } else { ?>
-                <div class="alert alert-warning"><i class="fa fa-question-circle"></i> Your shop is not yet activated.</div>
-                <button class="btn btn-default btn-block" data-toggle="modal" data-target="#shop-details-modal">Activate Shop</button>
-            <?php } ?>
+        <div class="panel panel-default">
+            <div class="panel-heading">Shop Details</div>
+            <div class="panel-body">
+                <?php if(isset($shop)) { ?>
+                    <div class="form-group">
+                        <label>Total Sales</label>
+                        <p class="lead">$0.00</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <p><?php echo $shop->name; ?></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <p><?php echo $shop->description; ?></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <p><?php echo $shop->enabled ? '<span class="text-success">Enabled</span>' : '<span class="text-danger">Disabled</span>'; ?></p>
+                    </div>
+                    <div class="btn btn-block btn-default" data-toggle="modal" data-target="#shop-details-modal">Edit Shop Details</div>
+                <?php } else { ?>
+                    <div class="alert alert-warning"><i class="fa fa-question-circle"></i> Your shop is not yet activated.</div>
+                    <button class="btn btn-default btn-block" data-toggle="modal" data-target="#shop-details-modal">Activate Shop</button>
+                <?php } ?>
+            </div>
         </div>
     </div>
-    <?php if(isset($shop)) { ?>
+
     <div class="col-sm-8">
-        <div class="danero-box">
-            <h2>Products</h2>
-            <table id="product-list-dt" class="display table table-hover table-bordered" width="100%">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Date Created</th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+        <div class="panel panel-default">
+            <div class="panel-heading">Products</div>
+            <div class="panel-body">
+                <table id="product-list-dt" class="display table table-hover table-bordered" width="100%">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Date Created</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    <?php } ?>
 </div>
 
 <div id="shop-details-modal" class="modal fade" tabindex="-1" role="dialog">
@@ -86,7 +89,7 @@
     var shopId = "<?php echo isset($shop) ? $shop->shop_id : 0; ?>";
 
     $(function() {
-        $('#sidenav-shop-link').addClass('active');
+        $('#nav-shop-link').addClass('active');
 
         $("#shop-status").bootstrapSwitch({
             onText: "Enabled",

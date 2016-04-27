@@ -6,14 +6,17 @@
 </head>
 
 <body>
-<div class="wrapper">
+<div class="wrapper" style="padding-bottom: 20px;">
 
     <?php echo $nav ?>
 
-    <?php echo $content; ?>
+    <section class="container">
+        <?php echo $content; ?>
+    </section>
     <div class="push"></div>
 </div>
 
+<?php echo $footer; ?>
 </body>
 
 </html>

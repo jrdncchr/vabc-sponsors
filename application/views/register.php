@@ -1,3 +1,8 @@
+<style>
+    .wizard > .actions > ul > li.disabled {
+        display: none;
+    }
+</style>
 <h2 class="text-center vabc-h2" style="margin-top: 30px;">Sponsor Registration</h2>
 <div class="row" style="margin-top: 10px;">
     <div class="col-sm-10 col-sm-offset-1">
@@ -196,6 +201,8 @@
     </div>
 </div>
 
+<footer class="footer text-center">&copy; Copyright <?php echo date('Y') . " " . $project; ?></footer>
+
 <script>
     $(function() {
         $('#nav-register').addClass('active');
@@ -206,9 +213,16 @@
             transitionEffect: "fade",
             autoFocus: true,
             enableFinishButton: false,
+            enableCancelButton: true,
+            onCanceled: function (event) {
+                alert("Skipped");
+            },
             onStepChanging: function (event, currentIndex, newIndex) {
                 console.log(event);
                 return true;
+            },
+            labels: {
+                cancel: "Skip"
             }
         });
 

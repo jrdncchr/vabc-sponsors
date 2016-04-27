@@ -43,13 +43,13 @@ class MY_Controller extends CI_Controller {
 
         $data['head'] = $this->load->view('templates/head', $this->data, true);
         $data['nav'] = $this->load->view('templates/nav', $this->data, true);
-        $data['footer'] = $this->load->view('templates/footer', $this->data, true);
+//        $data['footer'] = $this->load->view('templates/footer', $this->data, true);
         $data['content'] = $this->load->view($view, $data, true);
 
         $this->load->view('templates/skeleton', $data);
     }
 
-    public function _renderL($view)
+    public function _renderL2($view)
     {
         $this->data['css'] = $this->css;
         $this->data['js'] = $this->js;
@@ -62,6 +62,20 @@ class MY_Controller extends CI_Controller {
         $data['content'] = $this->load->view($view, $data, true);
 
         $this->load->view('templates/logged/skeleton', $data);
+    }
+
+    public function _renderL($view)
+    {
+        $this->data['css'] = $this->css;
+        $this->data['js'] = $this->js;
+        $this->data['bower'] = $this->bower;
+
+        $data['head'] = $this->load->view('templates/head', $this->data, true);
+        $data['nav'] = $this->load->view('templates/logged/nav2', $this->data, true);
+        $data['footer'] = $this->load->view('templates/footer', $this->data, true);
+        $data['content'] = $this->load->view($view, $data, true);
+
+        $this->load->view('templates/logged/skeleton2', $data);
     }
 
 } 
