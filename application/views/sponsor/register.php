@@ -268,11 +268,11 @@
                 if(currentIndex == 0) {
                     form = $('#sponsor-details');
                     if(!validator.validateForm(form)) {
-//                        return false;
+                        return false;
                     }
                     if($('#password').val() !== $('#confirm-password').val()) {
                         validator.displayAlertError(form, true, "Password did not match!");
-//                        return false;
+                        return false;
                     }
                     return true;
                 } else if(currentIndex == 1) {
