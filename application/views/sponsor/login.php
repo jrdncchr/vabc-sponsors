@@ -20,9 +20,9 @@
     <div class="container">
 
         <div class="col-sm-4 login-slide-block">
-            <div class="danero-box" style="padding: 30px; background-color: rgba(255,255,255,0.7);">
-                <h2>Sponsor Login</h2>
-                <form action="<?php echo base_url() . "login"; ?>" method="post">
+            <div class="vabc-login-box">
+                <h2 class="text-center"><i class="fa fa-key"></i> Login</h2>
+                <form action="<?php echo base_url() . "login"; ?>" method="post" style="padding-bottom: 30px;">
                     <?php
                     $error = $this->session->flashdata('error');
                     if(isset($error)) { ?>
@@ -39,23 +39,21 @@
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" id="password" placeholder="Password" />
                     </div>
-                    <button class="btn btn-vabc pull-right btn-lg">Login</button>
+                    <button class="btn btn-default pull-right">Login</button>
                 </form>
-                <br /><br />
             </div>
         </div>
 
         <div class="col-sm-4 col-sm-offset-5 login-slide-block">
-            <div class="danero-box" style="padding: 30px; background-color: rgba(255,255,255,0.7);">
-                <h2>Why become a Sponsor</h2>
+            <div class="vabc-login-box">
+                <h2 class="text-center"><i class="fa fa-smile-o"></i> Why become a Sponsor</h2>
                 <p><i class="fa fa-arrow-right"></i> Cras et tortor nec metus convallis sodales a eget magna.</p>
                 <p><i class="fa fa-arrow-right"></i> Aenean quis dolor vitae lectus ornare accumsan.</p>
                 <p><i class="fa fa-arrow-right"></i> Duis tristique lacus quis nulla eleifend, in efficitur libero venenatis.</p>
                 <p><i class="fa fa-arrow-right"></i> Nulla sit amet enim nec massa eleifend aliquet.</p>
                 <p><i class="fa fa-arrow-right"></i> Pellentesque finibus nulla in consequat bibendum.</p>
                 <p><i class="fa fa-arrow-right"></i> Aenean sodales erat ac nulla rutrum hendrerit.</p>
-                <a href="<?php echo base_url() . 'register'; ?>" class="btn btn-vabc btn-block btn-lg" style="margin-top: 15px;">Become a Sponsor Now</a>
-                <br />
+                <a href="<?php echo base_url() . 'register'; ?>" class="btn btn-default btn-block" style="margin-top: 15px;">Become a Sponsor Now</a>
             </div>
         </div>
     </div>

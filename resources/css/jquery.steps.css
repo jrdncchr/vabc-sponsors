@@ -142,7 +142,7 @@
     background: #eef2f6;
     display: block;
     margin: 0.5em;
-    min-height: 38em;
+    min-height: 46em;
     height: auto;
     position: relative;
     width: auto;
@@ -397,13 +397,12 @@
     position:relative;
     top:30px;
     background:rgba(255,255,255,1);
-    padding-top:40px;
-    padding-bottom:40px;
     border-radius:7px;
     color:#435061;
     box-shadow:5px 5px 0 rgba(0,0,0,0.05);
     -webkit-transition:all .3s ease-out;
     transition:all .3s ease-out;
+    padding: 40px 10px !important;
 }
 
 .content .plan.featured {
@@ -432,9 +431,14 @@
     margin-bottom:10px;
 }
 
-.content .plan p {
+.content .plan p.level-feature {
     margin-bottom:5px;
-    font-weight:400;
+    font-size: 14px;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.content .plan.featured p.level-feature, .content .plan:hover p.level-feature {
+    border-bottom: 1px solid #435061 !important;
 }
 
 .content .plan .icon {
@@ -472,13 +476,18 @@
     font-size:48px;
     font-weight:100;
     line-height:48px;
-    margin-bottom:30px;
+    margin-bottom:5px;
 }
 
 .content .plan.featured .price {
     margin-bottom:40px;
 }
 
+p.level-sub {
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 30px;
+}
 
 /*
  MEDIA

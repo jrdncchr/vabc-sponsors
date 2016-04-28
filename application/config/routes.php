@@ -49,11 +49,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'page';
+//$route['default_controller'] = 'page';
 
-$route['register'] = 'page/register';
-$route['login'] = 'page/login';
-$route['logout'] = 'page/logout';
+switch ($_SERVER['HTTP_HOST']) {
+    case 'sponsors.voicesagainstbraincancer.com':
+    case 'sponsors.vabc':
+        $route['login'] = "sponsor/page/login";
+        $route['register'] = "sponsor/page/register";
+        $route['logout'] = "sponsor/page/logout";
+        $route['(:any)'] = "sponsor/$1";
+        break;
 
+    case 'events.voicesagainstbraincancer.com':
+    case 'events.vabc':
+        $route['(:any)'] = "event/$1";
+        break;
+}
+$route['default_controller'] = "VABC";
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

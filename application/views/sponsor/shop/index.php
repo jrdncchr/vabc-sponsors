@@ -84,7 +84,7 @@
 </div>
 
 <script>
-    var actionUrl = "<?php echo base_url() . 'shop/action'; ?>";
+    var actionUrl = "<?php echo base_url() . 'sponsor/shop/action'; ?>";
     var shopEnabled = "<?php echo isset($shop) ? ($shop->enabled == 1 ? true : false) : false; ?>";
     var shopId = "<?php echo isset($shop) ? $shop->shop_id : 0; ?>";
 

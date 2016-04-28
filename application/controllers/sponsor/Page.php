@@ -21,15 +21,15 @@ class Page extends MY_Controller {
                 redirect('dashboard');
             } else {
                 $this->session->set_flashdata('error', $result['message']);
-                $this->_render('login');
+                $this->_render('sponsor/login');
             }
         } else {
-            $this->_render('login');
+            $this->_render('sponsor/login');
         }
     }
 
     public function register() {
-        $this->_render('register');
+        $this->_render('sponsor/register');
     }
 
     public function logout() {

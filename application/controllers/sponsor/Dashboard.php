@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Events extends MY_Controller {
+class Dashboard extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -13,7 +13,7 @@ class Events extends MY_Controller {
     }
 
 	public function index() {
-        $this->_renderL('events/index');
+        $this->_renderL('sponsor/dashboard/index');
 	}
 
 }

@@ -13,7 +13,7 @@ class Profile extends MY_Controller {
     }
 
 	public function index() {
-        $this->_renderL('profile/index');
+        $this->_renderL('sponsor/profile/index');
 	}
 
 }
