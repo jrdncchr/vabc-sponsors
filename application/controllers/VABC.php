@@ -11,7 +11,7 @@ class VABC extends MY_Controller {
 	public function index() {
 
         switch ($_SERVER['HTTP_HOST']) {
-            case 'sponsors.voicesagainstbraincancer.com':
+            case 'sponsors.voicesagainstbraincancer.org':
             case 'sponsors.vabc':
                 $this->sponsor();
                 break;

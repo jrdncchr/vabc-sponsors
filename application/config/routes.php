@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //$route['default_controller'] = 'page';
 
 switch ($_SERVER['HTTP_HOST']) {
-    case 'sponsors.voicesagainstbraincancer.com':
+    case 'sponsors.voicesagainstbraincancer.org':
     case 'sponsors.vabc':
         $route['login'] = "sponsor/page/login";
         $route['register'] = "sponsor/page/register";
@@ -60,7 +60,7 @@ switch ($_SERVER['HTTP_HOST']) {
         $route['(:any)'] = "sponsor/$1";
         break;
 
-    case 'events.voicesagainstbraincancer.com':
+    case 'events.voicesagainstbraincancer.org':
     case 'events.vabc':
         $route['(:any)'] = "event/$1";
         break;

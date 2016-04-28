@@ -11,10 +11,12 @@
             <div id="registration-steps">
                 <h3>Sponsor Details</h3>
                 <section>
-                    <div class="row">
+                    <div class="row" id="sponsor-details">
+                        <div class="col-sm-8 col-sm-offset-2" style="padding: 10px 0; border-radius:7px;">
+                            <div class="notice"></div>
+                        </div>
                         <div class="col-sm-8 col-sm-offset-2 vabc-box" style="margin-bottom: 20px;">
                             <h2>General Information</h2>
-                            <div class="notice"></div>
                             <div class="form-group">
                                 <label for="company-name">* Company Name</label>
                                 <input id="company-name" type="text" class="form-control required" />
@@ -74,19 +76,19 @@
                         <div class="col-sm-8 col-sm-offset-2 vabc-box" style="margin-top: 20px; margin-bottom: 20px;">
                             <h2>Social Links</h2>
                             <div class="form-group">
-                                <label for="facebook">* Facebook </label>
-                                <input id="facebook" type="text" class="form-control required" />
+                                <label for="facebook">Facebook </label>
+                                <input id="facebook" type="text" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <label for="twitter">* Twitter</label>
-                                <input id="twitter" type="text" class="form-control required" />
+                                <label for="twitter">Twitter</label>
+                                <input id="twitter" type="text" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <label for="linkedin">* LinkedIn</label>
+                                <label for="linkedin">LinkedIn</label>
                                 <input id="linkedin" type="text" class="form-control" />
                             </div>
                             <div class="form-group">
-                                <label for="googleplus">* Google+</label>
+                                <label for="googleplus">Google+</label>
                                 <input id="googleplus" type="text" class="form-control" />
                             </div>
                         </div>
@@ -95,7 +97,7 @@
                             <h2>Authentication</h2>
                             <div class="form-group">
                                 <label for="email">* Email Address </label>
-                                <input id="email" type="email" class="form-control required" />
+                                <input id="email" type="email" class="form-control required email" />
                             </div>
                             <div class="form-group">
                                 <label for="password">* Password</label>
@@ -111,7 +113,10 @@
                 </section>
                 <h3>Level of Sponsorship</h3>
                 <section>
-                    <div class="row">
+                    <div class="row" id="level-of-sponsorship">
+                        <div class="col-sm-8 col-sm-offset-2" style="padding: 10px 0; border-radius:7px;">
+                            <div class="notice"></div>
+                        </div>
                         <div class="col-sm-4 text-center">
                             <div class="plan">
                                 <input class="level-id" type="hidden" value="1" />
@@ -164,7 +169,7 @@
                         </div>
                     </div>
                     <div class="row" style="margin-top: 50px;">
-                        <div class="col-sm-4 col-sm-offset-4">
+                        <div class="col-sm-4">
                             <button class="btn btn-block" style="background-color: #fff">Register as a Pending Sponsor</button>
                         </div>
                     </div>
@@ -173,60 +178,32 @@
                 <section>
                     <div class="row">
                         <div class="col-sm-10 col-sm-offset-1">
+                            <?php foreach($events as $e): ?>
                             <div class="media vabc-box">
                                 <div class="row-eq-height">
-                                    <div class="media-img col-sm-5 col-md-4 col-lg-4" style="background-image: url('http://www.voicesinmotion.org/images/content/pagebuilder/slideshow1.jpg'); ">
+                                    <div class="media-img col-sm-5 col-md-4 col-lg-4" style="background-image: url('<?php echo base_url() . "resources/uploads/events/" . $e->image1; ?>'); ">
                                     </div>
                                     <div class="col-sm-7 col-md-8 col-lg-8 media-content">
                                         <div class="media-info">
-                                            <h2>WASHINGTON DC RUN/ WALK 2016</h2>
-                                            <p>
-                                                Sunday, April 10, 2016 Tropical Park
-                                                Proceeds Will Benefit Brain Cancer Research At
-                                                Sylvester Comprehensive Cancer Center at University of Miami Health System And
-                                                Nicklaus Children's Hospital, Miami Childen's Health System
+                                            <h2><?php echo $e->name; ?></h2>
+                                            <p class="block-with-text">
+                                                <?php echo $e->description; ?>
                                             </p>
                                         </div>
                                         <div class="media-actions">
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <button class="btn btn-default">View Details</button>
+                                                    <a class="btn btn-default" href="<?php echo $e->info_link; ?>">View Details</a>
                                                 </div>
                                                 <div class="col-sm-6 text-right">
-                                                    <input class="switch" type="checkbox" data-event-id="1" />
+                                                    <input class="switch" type="checkbox" data-event-id="<?php echo $e->event_id; ?>" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="media vabc-box">
-                                <div class="row-eq-height">
-                                    <div class="media-img col-sm-5 col-md-4 col-lg-4" style="background-image: url('http://www.voicesinmotion.org/images/content/pagebuilder/miami1.jpg'); ">
-                                    </div>
-                                    <div class="col-sm-7 col-md-8 col-lg-8 media-content">
-                                        <div class="media-info">
-                                            <h2>Miami Run/Walk</h2>
-                                            <p>
-                                                Sunday, April 10, 2016 Tropical Park
-                                                Proceeds Will Benefit Brain Cancer Research At
-                                                Sylvester Comprehensive Cancer Center at University of Miami Health System And
-                                                Nicklaus Children's Hospital, Miami Childen's Health System
-                                            </p>
-                                        </div>
-                                        <div class="media-actions">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <button class="btn btn-default">View Details</button>
-                                                </div>
-                                                <div class="col-sm-6 text-right">
-                                                    <input class="switch" type="checkbox" data-event-id="1" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </section>
@@ -275,7 +252,7 @@
 <footer class="footer text-center">&copy; Copyright <?php echo date('Y') . " " . $project; ?></footer>
 
 <script>
-    var selectedLevelId;
+    var selectedLevelId = 0;
 
     $(function() {
         $('#nav-register').addClass('active');
@@ -286,10 +263,31 @@
             transitionEffect: "fade",
             autoFocus: true,
             enableFinishButton: false,
-//            enablePagination: false,
             onStepChanging: function (event, currentIndex, newIndex) {
-                console.log(event);
-                return true;
+                var form;
+                if(currentIndex == 0) {
+                    form = $('#sponsor-details');
+                    if(!validator.validateForm(form)) {
+//                        return false;
+                    }
+                    if($('#password').val() !== $('#confirm-password').val()) {
+                        validator.displayAlertError(form, true, "Password did not match!");
+//                        return false;
+                    }
+                    return true;
+                } else if(currentIndex == 1) {
+                    form = $('#level-of-sponsorship');
+                    if(selectedLevelId == 0) {
+                        validator.displayAlertError(form, true, "You must select a level to continue.");
+                        return false;
+                    } else {
+                        validator.displayAlertError(form, false);
+                        return true;
+                    }
+                } else if(currentIndex == 2) {
+                    return true;
+                }
+
             }
         });
 
@@ -303,11 +301,18 @@
         });
 
         $('.btn-pricing').on('click', function() {
-            $('.plan').removeClass('featured');
-            $('.btn-pricing').html('Select');
-            $(this).parent('.plan').addClass('featured');
-            $(this).html('<i class="fa fa-check fa-2x"></i>');
-            selectedLevelId = $(this).parent('.plan').find('.level-id').val();
+            if($(this).parent('.plan').hasClass('featured')) {
+                $('.plan').removeClass('featured');
+                $('.btn-pricing').html('Select');
+                selectedLevelId = 0;
+            } else {
+                $('.plan').removeClass('featured');
+                $('.btn-pricing').html('Select');
+                $(this).parent('.plan').addClass('featured');
+                $(this).html('<i class="fa fa-check fa-2x"></i>');
+                selectedLevelId = $(this).parent('.plan').find('.level-id').val();
+            }
+
         });
 
 

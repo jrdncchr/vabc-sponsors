@@ -29,6 +29,8 @@ class Page extends MY_Controller {
     }
 
     public function register() {
+        $this->load->model('event_model');
+        $this->data['events']  = $this->event_model->get_list(array('status' => 'active'));
         $this->_render('sponsor/register');
     }
 

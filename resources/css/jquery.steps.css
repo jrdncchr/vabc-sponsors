@@ -133,7 +133,7 @@
 .wizard > .steps .error a:hover,
 .wizard > .steps .error a:active
 {
-    background: #ff3111;
+    background: #a94442;
     color: #fff;
 }
 
@@ -438,7 +438,7 @@
 }
 
 .content .plan.featured p.level-feature, .content .plan:hover p.level-feature {
-    border-bottom: 1px solid #435061 !important;
+    border-bottom: 1px solid goldenrod !important;
 }
 
 .content .plan .icon {

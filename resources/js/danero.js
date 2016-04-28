@@ -29,3 +29,9 @@ function activateTooltips() {
 function setColumnSize() {
     $('.wrapper').css('min-height', $( window ).height() - 164);
 }
+
+function scrollTo(e) {
+    $('html, body').animate({
+        scrollTop: e.offset().top
+    }, 1000);
+}

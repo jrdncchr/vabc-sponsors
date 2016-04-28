@@ -1,10 +1,10 @@
 <?php
 
-class Shop_model extends CI_Model {
+class Event_model extends CI_Model {
 
-    protected $tbl = 'shop';
+    protected $tbl = 'event';
     protected $add_rules = [
-        'required'  => [['name'], ['sponsor_id']],
+        'required'  => [],
         'email'     => [],
         'equals'    => [],
         'lengthMin' => [],
@@ -23,6 +23,11 @@ class Shop_model extends CI_Model {
         return $result->row();
     }
 
+    public function get_list($where) {
+        $result = $this->db->get_where($this->tbl, $where);
+        return $result->result();
+    }
+
     /*
      * ADD
      */
@@ -38,7 +43,7 @@ class Shop_model extends CI_Model {
         /* Check if unique identifier already exists */
         $result = $this->db->get_where($this->tbl, array('name' => $data['name']));
         if($result->num_rows() > 0) {
-            return array('success' => false, 'message' => 'Shop Name already exists.', 'field' => 'name');
+            return array('success' => false, 'message' => 'Event Name already exists.', 'field' => 'name');
         }
 
         /* Insert data */
@@ -57,9 +62,9 @@ class Shop_model extends CI_Model {
     /*
      * UPDATE
      */
-    public function update($shop_id, array $update) {
+    public function update($even_id, array $update) {
         $this->db->trans_start();
-        $this->db->where('shop_id', $shop_id);
+        $this->db->where('event_id', $even_id);
         if($this->db->update($this->tbl, $update)) {
             if ($this->db->trans_status() === FALSE) {
                 $this->db->trans_rollback();
