@@ -2,17 +2,17 @@
 
 class MY_Controller extends CI_Controller {
 
-    protected $sponsor;
+    protected $user;
     protected $data;
 
     protected $css;
     protected $js;
     protected $bower;
 
-    protected $project = "Voices Against Brain Cancer";
-    protected $title = "Voices - Sponsors";
-    protected $description = "Voices Against Brain Cancer - Sponsors";
-    protected $keywords = "Voices Against Brain Cancer - Sponsors";
+    protected $project = "Hutarian - Sponsorship";
+    protected $title = "Sponsorship - Sponsors";
+    protected $description = "Hutarian - Sponsorship - Sponsors";
+    protected $keywords = "Hutarian - Sponsorship - Sponsors";
     protected $author = "Danero";
 
     public function __construct($logged = false)
@@ -23,9 +23,9 @@ class MY_Controller extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('session');
 
-        $this->sponsor = $this->session->userdata('sponsor');
-        if(null != $this->sponsor) {
-            $this->data['sponsor'] = $this->sponsor;
+        $this->user = $this->session->userdata('user');
+        if(null != $this->user) {
+            $this->data['user'] = $this->user;
         }
 
         $this->data['project'] = $this->project;
@@ -79,6 +79,14 @@ class MY_Controller extends CI_Controller {
         $data['content'] = $this->load->view($view, $data, true);
 
         $this->load->view('templates/logged/skeleton2', $data);
+    }
+
+    public function is_localhost() {
+        $whitelist = array('127.0.0.1', '::1', 'sponsors.sdc');
+        if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
+            return true;
+        }
+        return false;
     }
 
 } 

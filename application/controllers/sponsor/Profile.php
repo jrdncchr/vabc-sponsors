@@ -6,8 +6,8 @@ class Profile extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-        $sponsor = $this->session->userdata('sponsor');
-        if(null == $sponsor) {
+        $user = $this->session->userdata('user');
+        if(null == $user) {
             redirect('/');
         }
     }

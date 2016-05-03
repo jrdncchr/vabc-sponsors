@@ -52,16 +52,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //$route['default_controller'] = 'page';
 
 switch ($_SERVER['HTTP_HOST']) {
-    case 'sponsors.voicesagainstbraincancer.org':
-    case 'sponsors.vabc':
+    case 'sponsor.skiesinsure.com':
+    case 'sponsor.sdc':
         $route['login'] = "sponsor/page/login";
         $route['register'] = "sponsor/page/register";
         $route['logout'] = "sponsor/page/logout";
         $route['(:any)'] = "sponsor/$1";
+        $route['(:any)/(:any)'] = 'sponsor/$1/$2';
+        $route['(:any)/(:any)/(:any)'] = 'sponsor/$1/$2/$3';
+        $route['(:any)/(:any)/(:any)/(:any)'] = 'sponsor/$1/$2/$3/$4';
         break;
 
     case 'events.voicesagainstbraincancer.org':
-    case 'events.vabc':
+    case 'event.sdc':
         $route['(:any)'] = "event/$1";
         break;
 }

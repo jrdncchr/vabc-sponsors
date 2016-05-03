@@ -7,6 +7,6 @@
 
 <script>
     $(function() {
-        $('#sidenav-dashboard-link').addClass('active');
+        $('#nav-dashboard-link').addClass('active');
     });
 </script>

@@ -73,7 +73,7 @@
 
 .wizard > .steps > ul > li
 {
-    width: 25%;
+    width: 20%;
 }
 
 .wizard > .steps > ul > li,
@@ -142,10 +142,11 @@
     background: #eef2f6;
     display: block;
     margin: 0.5em;
-    min-height: 46em;
+    min-height: 15em;
     height: auto;
     position: relative;
     width: auto;
+    padding-bottom: 20px;
 
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -476,6 +477,7 @@
     font-size:48px;
     font-weight:100;
     line-height:48px;
+    text-indent: 30px;
     margin-bottom:5px;
 }
 

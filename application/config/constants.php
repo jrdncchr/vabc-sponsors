@@ -4,11 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |--------------------------------------------------------------------------
 | Custom
 |--------------------------------------------------------------------------
-| Jelly Fish Constants
 */
-defined('DB_NAME')  OR define('DB_NAME', 'voicesag_tool');
-defined('DB_USER')  OR define('DB_USER', 'voicesag_admin');
-defined('DB_PASS')  OR define('DB_PASS', 'vabcadmin143');
+defined('DB_NAME')  OR define('DB_NAME', 'skiesins_sponsorship');
+defined('DB_USER')  OR define('DB_USER', 'skiesins_danero');
+defined('DB_PASS')  OR define('DB_PASS', 'daneroAdmin143');
 
 
 /*

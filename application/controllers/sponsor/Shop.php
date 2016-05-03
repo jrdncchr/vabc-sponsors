@@ -6,15 +6,15 @@ class Shop extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-        $sponsor = $this->session->userdata('sponsor');
-        if(null == $sponsor) {
+        $user = $this->session->userdata('user');
+        if(null == $user) {
             redirect('/');
         }
         $this->load->model('shop_model');
     }
 
 	public function index() {
-        $shop = $this->shop_model->get(array('sponsor_id' => $this->sponsor->sponsor_id));
+        $shop = $this->shop_model->get(array('user_id' => $this->user->user_id));
         if($shop) {
             $this->data['shop'] = $shop;
         }
@@ -26,7 +26,7 @@ class Shop extends MY_Controller {
         switch($action) {
             case 'shop_save' :
                 $shop = $this->input->post('shop');
-                $shop['sponsor_id'] = $this->sponsor->sponsor_id;
+                $shop['user_id'] = $this->user->user_id;
                 if(isset($shop['shop_id'])) {
                     $result = $this->shop_model->update($shop['shop_id'], $shop);
                 } else {

@@ -3,6 +3,12 @@
 class Event_model extends CI_Model {
 
     protected $tbl = 'event';
+    protected $level_tbl = 'level';
+    protected $event_sponsors_tbl = 'event_sponsors';
+    protected $event_sponsors_guests_tbl = 'event_sponsors_guests';
+    protected $guest_tbl = 'guest';
+    protected $user_tbl = 'user';
+
     protected $add_rules = [
         'required'  => [],
         'email'     => [],
@@ -23,7 +29,7 @@ class Event_model extends CI_Model {
         return $result->row();
     }
 
-    public function get_list($where) {
+    public function get_list($where = array()) {
         $result = $this->db->get_where($this->tbl, $where);
         return $result->result();
     }
@@ -62,9 +68,9 @@ class Event_model extends CI_Model {
     /*
      * UPDATE
      */
-    public function update($even_id, array $update) {
+    public function update($event_id, array $update) {
         $this->db->trans_start();
-        $this->db->where('event_id', $even_id);
+        $this->db->where('event_id', $event_id);
         if($this->db->update($this->tbl, $update)) {
             if ($this->db->trans_status() === FALSE) {
                 $this->db->trans_rollback();
@@ -74,6 +80,33 @@ class Event_model extends CI_Model {
             }
         }
         return array('success' => false, 'message' => 'Something went wrong.');
+    }
+
+    /*
+     * Event Sponsors
+     */
+    public function get_event_sponsors($user_id) {
+        $this->db->select('event.event_id, event.name, event.description, event.info_link, event.image1, event.status, event_sponsors.es_id');
+        $this->db->from($this->tbl);
+        $this->db->join($this->event_sponsors_tbl,
+            "event_sponsors.event_id = event.event_id AND event_sponsors.sponsor_id = $user_id AND event_sponsors.status = 'active'", 'left');
+        $this->db->join($this->level_tbl, 'level.level_id = event_sponsors.level_id', 'left');
+        $this->db->where('event.status !=', 'draft');
+        $result = $this->db->get();
+        return $result->result();
+    }
+
+    /*
+     * Event Sponsors Guests
+     */
+    public function get_event_sponsors_guests($event_id, $sponsor_id) {
+        $this->db->join($this->guest_tbl, 'guest.user_id = event_sponsors_guests.guest_id', 'left');
+        $this->db->join($this->user_tbl, 'user.user_id = guest.user_id', 'left');
+        $this->db->from($this->event_sponsors_guests_tbl);
+        $this->db->where(array('event_sponsors_guests.event_id' => $event_id,'event_sponsors_guests.sponsor_id' => $sponsor_id));
+        $this->db->order_by('event_sponsors_guests.date_created', 'DESC');
+        $list = $this->db->get();
+        return $list->result();
     }
 
 

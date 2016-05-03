@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" style="margin-bottom: 35px;">
+<nav class="navbar navbar-default" style="margin-bottom: 20px;">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
             </button>
         </div>
-        <a class="navbar-brand">VOICES SPONSORS</a>
+        <a class="navbar-brand">SPONSORS</a>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -34,7 +34,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" id="nav-user-link" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <?php echo "Welcome, " .  $sponsor->company_name; ?> <i class="fa fa-caret-down"></i>
+                        <?php echo "Welcome, " .  $user->details->company_name; ?> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu">
                         <li>

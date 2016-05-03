@@ -1,25 +1,8 @@
-<div class="row">
-
-
-    <div class="carousel slide" data-ride="carousel">
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <div class="slide-image" style="background-image: url('<?php echo base_url() . 'resources/images/sponsor-slide-img1.jpg'; ?>')">
-                </div>
-            </div>
-            <div class="item">
-                <div class="slide-image" style="background-image: url('<?php echo base_url() . 'resources/images/sponsor-slide-img2.jpg'; ?>')">
-                </div>
-            </div>
-        </div>
-    </div>
-
+<div class="slide-image" style="background-image: url('<?php echo base_url() . 'resources/images/sponsor-slide-img1.jpg'; ?>')">
 
     <div class="container">
 
-        <div class="col-sm-4 login-slide-block">
+        <div class="col-sm-5">
             <div class="vabc-login-box">
                 <h2 class="text-center"><i class="fa fa-key"></i> Login</h2>
                 <form action="<?php echo base_url() . "login"; ?>" method="post" style="padding-bottom: 30px;">
@@ -39,12 +22,12 @@
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" id="password" placeholder="Password" />
                     </div>
-                    <button class="btn btn-default pull-right">Login</button>
+                    <button class="btn btn-default btn-white pull-right">Login</button>
                 </form>
             </div>
         </div>
 
-        <div class="col-sm-4 col-sm-offset-5 login-slide-block">
+        <div class="col-sm-5 col-sm-offset-2">
             <div class="vabc-login-box">
                 <h2 class="text-center"><i class="fa fa-smile-o"></i> Why become a Sponsor</h2>
                 <p><i class="fa fa-arrow-right"></i> Cras et tortor nec metus convallis sodales a eget magna.</p>
@@ -53,21 +36,10 @@
                 <p><i class="fa fa-arrow-right"></i> Nulla sit amet enim nec massa eleifend aliquet.</p>
                 <p><i class="fa fa-arrow-right"></i> Pellentesque finibus nulla in consequat bibendum.</p>
                 <p><i class="fa fa-arrow-right"></i> Aenean sodales erat ac nulla rutrum hendrerit.</p>
-                <a href="<?php echo base_url() . 'register'; ?>" class="btn btn-default btn-block" style="margin-top: 15px;">Become a Sponsor Now</a>
+                <a href="<?php echo base_url() . 'register'; ?>" class="btn btn-default btn-block btn-white" style="margin-top: 15px;">Become a Sponsor Now</a>
             </div>
         </div>
     </div>
 
 
 </div>
-
-<footer class="footer text-center" style="margin-top: 0;">&copy; Copyright <?php echo date('Y') . " " . $project; ?></footer>
-
-<script>
-    $(function() {
-        $('#nav-login').addClass('active');
-        $('.carousel').carousel({
-            interval: 10000
-        })
-    });
-</script>
