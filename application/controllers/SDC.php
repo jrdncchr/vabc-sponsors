@@ -11,8 +11,8 @@ class SDC extends MY_Controller {
 	public function index() {
         echo "Under Construction";
 
-        $this->load->model('email_model');
-        $this->email_model->send();
+//        $this->load->model('email_model');
+//        $this->email_model->send();
     }
 
 }

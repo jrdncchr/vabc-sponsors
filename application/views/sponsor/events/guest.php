@@ -4,13 +4,13 @@
     }
 </style>
 <ol class="breadcrumb">
-    <li><a href="<?php echo base_url() . 'events'; ?>">Library</a></li>
+    <li><a href="<?php echo $client_base_url . '/sponsor/events'; ?>">Library</a></li>
     <li class="active"><?php echo $event->name; ?></li>
 </ol>
 <div class="row">
     <div class="col-sm-4">
         <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-calendar-o"></i> Event Details</div>
+            <div class="panel-heading" style="border-bottom: none;"><i class="fa fa-calendar-o"></i> Event Details</div>
             <div class="panel-body" style="padding:0;">
                 <div class="event-image" style="background-image: url('<?php echo base_url() . "resources/uploads/events/" . $event->image1; ?>');"></div>
                 <div style="padding: 10px;">
@@ -28,7 +28,6 @@
                     </div>
                     <a href="<?php echo $event->info_link; ?>" class="btn btn-default btn-block">Event Detailed Information</a>
                 </div>
-<!--                --><?php //var_dump($event); ?>
             </div>
         </div>
     </div>
@@ -37,6 +36,12 @@
         <div class="panel panel-default">
             <div class="panel-heading"><i class="fa fa-users"></i> Guests</div>
             <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button class="btn btn-default pull-left"><i class="fa fa-globe"></i> Guest Registration</button>
+                        <button class="btn btn-default pull-right" id="invite-btn"><i class="fa fa-user-plus"></i> Invite Guest</button>
+                    </div>
+                </div>
                 <table id="guest-list-dt" class="display table table-hover table-bordered" width="100%">
                     <thead>
                     <tr>
@@ -48,6 +53,31 @@
                     <tbody>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="invite-guest-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" style="width: 450px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><i class="fa fa-user-plus"></i> Invite Guest</h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">
+                    <i class="fa fa-question-circle"></i>
+                    Use comma for multiple email address.
+                </div>
+                <div class="form-group">
+                    <label for="guest-emails">* Email Address</label> <br />
+                    <input id="guest-emails" type="email" class="form-control" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button class="btn btn-default">Send Invitation <i class="fa fa-send"></i></button>
             </div>
         </div>
     </div>
@@ -102,14 +132,28 @@
 
     $(function() {
         $('#nav-events-link').addClass('active');
+        $('#guest-emails').tagsinput({
+            allowDuplicates: false
+        });
 
+        $('#invite-btn').on('click', function() {
+            $('#invite-guest-modal').modal({
+                show: true,
+                backdrop: 'static',
+                keyboard: false
+            });
+        });
 
         $('#guest-list-dt').dataTable({
-            "destroy": true,
-            "ajax": {
-                "type": "POST",
-                "url": actionUrl,
-                "data": {action: "guest_list"}
+            destroy: true,
+            filter: false,
+            paginate: false,
+            lengthChange: false,
+            info: false,
+            ajax: {
+                type: "POST",
+                url: actionUrl,
+                data: {action: "guest_list"}
             },
             columns: [
                 {data: "name", width: "40%"},

@@ -15,7 +15,8 @@
 <?php } ?>
 <link rel="stylesheet" href="<?php echo base_url() . 'bower_components/toastr/toastr.min.css'; ?>" />
 <link rel="stylesheet" href="<?php echo base_url() . 'resources/css/plugin.css'; ?>" />
-<link rel="stylesheet" href="<?php echo base_url() . 'resources/css/bootstrap-switch.css'; ?>" />
+<link rel="stylesheet" href="<?php echo base_url() . 'resources/css/plugins/bootstrap-switch.css'; ?>" />
+<link rel="stylesheet" href="<?php echo base_url() . 'resources/css/plugins/bootstrap-tagsinput.css'; ?>" />
 <link rel="stylesheet" href="<?php echo base_url() . 'resources/css/danero.css'; ?>" />
 
 <!-- Scripts -->
@@ -30,6 +31,7 @@
 <script src="<?php echo base_url() . 'bower_components/jquery.steps/build/jquery.steps.min.js'; ?>"></script>
 <script src="<?php echo base_url() . 'bower_components/select2/dist/js/select2.min.js'; ?>"></script>
 <script src="<?php echo base_url() . 'resources/js/plugins/bootstrap-switch.min.js'; ?>"></script>
+<script src="<?php echo base_url() . 'resources/js/plugins/bootstrap-tagsinput.min.js'; ?>"></script>
 <script src="<?php echo base_url() . 'resources/js/danero-validator.js'; ?>"></script>
 <script src="<?php echo base_url() . 'resources/js/danero.js'; ?>"></script>
 <script>
