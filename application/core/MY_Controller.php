@@ -18,10 +18,13 @@ class MY_Controller extends CI_Controller {
     public function __construct($logged = false)
     {
         parent::__construct();
-        $this->request_method = $_SERVER['REQUEST_METHOD'];
 
+        $this->request_method = $_SERVER['REQUEST_METHOD'];
         $this->load->helper('url');
         $this->load->library('session');
+
+        $this->check_client();
+        $this->define_settings();
 
         $this->user = $this->session->userdata('user');
         if(null != $this->user) {
@@ -35,35 +38,75 @@ class MY_Controller extends CI_Controller {
         $this->data['author'] = $this->author;
     }
 
+
+    /* Configure the settings based from host.
+     */
+    public function define_settings()
+    {
+        $localhost = array('127.0.0.1', '::1', 'sponsors.sdc');
+        if(in_array($_SERVER['REMOTE_ADDR'], $localhost)) {
+            define('PAYPAL_URL', 'https://www.sandbox.paypal.com/cgi-bin/webscr');
+            define('PAYPAL_BUSINESS', 'jrdn-sb-business@gmail.com');
+            define('MAILGUN_API', 'key-0a22dc9b70f19379be7b3d0b589597d7');
+            define('MAILGUN_DOMAIN', 'sandbox42bb7fca122043d4a2db264e4d5c6167.mailgun.org');
+        } else {
+            define('PAYPAL_URL', 'https://www.paypal.com/cgi-bin/webscr');
+            define('PAYPAL_BUSINESS', 'soferamir@gmail.com');
+            define('MAILGUN_API', 'key-0a22dc9b70f19379be7b3d0b589597d7');
+            define('MAILGUN_DOMAIN', 'sandbox42bb7fca122043d4a2db264e4d5c6167.mailgun.org');
+        }
+    }
+
+    /* Check the first segment which is the client code. If exists, it will create the client base url,
+     * and will allow the user to continue.
+     */
+    protected $client_base_url;
+    protected $client_code;
+    public function check_client() {
+        $uri = uri_string();
+        if(!empty($uri)) {
+            $uri_array = explode('/',$uri);
+            $client_code = $uri_array[0];
+            if(isset($client_code)) {
+                $session_client_code = $this->session->userdata('client_code');
+                if(null == $session_client_code) {
+                    $this->load->model('client_model');
+                    $client = $this->client_model->get(array('client_code' => $client_code));
+                    if($client) {
+                        $this->session->set_userdata('client_code', $client->client_code);
+                        $this->data['client_base_url'] = base_url() . $client_code;
+                        $this->client_base_url = base_url() . $client_code;
+                        $this->client_code = $client_code;
+                        return true;
+                    }
+                } else {
+                    if($client_code == $session_client_code) {
+                        $this->data['client_base_url'] = base_url() . $client_code;
+                        $this->client_base_url = base_url() . $client_code;
+                        $this->client_code = $client_code;
+                        return true;
+                    }
+                }
+                redirect(base_url());
+            }
+        }
+        return false;
+    }
+
+    public function redirect($path) {
+        redirect($this->client_code . '/' . $path);
+    }
+
     public function _render($view)
     {
         $data = $this->data;
         $data['css'] = $this->css;
         $data['js'] = $this->js;
         $data['bower'] = $this->bower;
-
         $data['head'] = $this->load->view('templates/head', $data, true);
         $data['nav'] = $this->load->view('templates/nav', $data, true);
-//        $data['footer'] = $this->load->view('templates/footer', $this->data, true);
         $data['content'] = $this->load->view($view, $data, true);
-
         $this->load->view('templates/skeleton', $data);
-    }
-
-    public function _renderL2($view)
-    {
-        $data = $this->data;
-        $data['css'] = $this->css;
-        $data['js'] = $this->js;
-        $data['bower'] = $this->bower;
-
-        $data['head'] = $this->load->view('templates/head', $data, true);
-        $data['sidenav'] = $this->load->view('templates/logged/sidenav', $data, true);
-        $data['nav'] = $this->load->view('templates/logged/nav', $data, true);
-        $data['footer'] = $this->load->view('templates/footer', $data, true);
-        $data['content'] = $this->load->view($view, $data, true);
-
-        $this->load->view('templates/logged/skeleton', $data);
     }
 
     public function _renderL($view)
@@ -72,21 +115,12 @@ class MY_Controller extends CI_Controller {
         $data['css'] = $this->css;
         $data['js'] = $this->js;
         $data['bower'] = $this->bower;
-
         $data['head'] = $this->load->view('templates/head', $data, true);
-        $data['nav'] = $this->load->view('templates/logged/nav2', $data, true);
+        $data['nav'] = $this->load->view('templates/logged/nav', $data, true);
         $data['footer'] = $this->load->view('templates/footer', $data, true);
         $data['content'] = $this->load->view($view, $data, true);
 
-        $this->load->view('templates/logged/skeleton2', $data);
-    }
-
-    public function is_localhost() {
-        $whitelist = array('127.0.0.1', '::1', 'sponsors.sdc');
-        if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
-            return true;
-        }
-        return false;
+        $this->load->view('templates/logged/skeleton', $data);
     }
 
 } 

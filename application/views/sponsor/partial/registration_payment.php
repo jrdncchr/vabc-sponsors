@@ -37,10 +37,10 @@
         <p style="font-weight: bold;">Select Payment option: </p>
     </div>
     <div class="col-sm-4">
-        <form id="paypalForm" action="<?php echo $paypal['url']; ?>" method="post">
+        <form id="paypalForm" action="<?php echo PAYPAL_URL; ?>" method="post">
 
             <!-- Identify your business so that you can collect the payments. -->
-            <input type="hidden" name="business" value="<?php echo $paypal['business']; ?>">
+            <input type="hidden" name="business" value="<?php echo PAYPAL_BUSINESS; ?>">
 
             <!-- Specify a Buy Now button. -->
             <input type="hidden" name="cmd" value="_xclick">
@@ -51,9 +51,9 @@
             <input type="hidden" name="currency_code" value="USD">
             <input type="hidden" name="custom" value="<?php echo $events_sponsoring; ?>" />
             <!-- Specify URLs -->
-            <input type='hidden' name='cancel_return' value='<?php echo base_url() . 'register'; ?>'>
-            <input type="hidden" name="notify_url" value="<?php echo base_url() . 'sponsor/page/payment_success';  ?>"/>
-            <input type='hidden' name='return' value='<?php echo base_url() . 'sponsor/page/payment_success'; ?>'>
+            <input type='hidden' name='cancel_return' value='<?php echo $client_base_url . '/register'; ?>'>
+            <input type="hidden" name="notify_url" value="<?php echo $client_base_url . '/sponsor/page/payment_success';  ?>"/>
+            <input type='hidden' name='return' value='<?php echo $client_base_url . '/sponsor/page/payment_success'; ?>'>
 
             <!-- Display the payment button. -->
             <div class="text-center">

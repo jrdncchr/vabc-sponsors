@@ -121,8 +121,7 @@ class User_model extends CI_Model {
                             $this->db->trans_commit();
                             $CI =& get_instance();
                             $CI->load->model('email_model');
-                            $this->email_model->send_email($user['email'], 'Sponsor Tool - Email Confirmation',
-                                'Your email confirmation code is: ' . $user_secret['email_confirmation']);
+                            $this->email_model->send_email_confirmation_code($user['email'], $user_secret['email_confirmation']);
                             return array('success' => true, 'user_id' => $user_id);
                         }
                     }

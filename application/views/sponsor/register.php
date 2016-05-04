@@ -263,7 +263,7 @@
     var selectedLevelId = 0;
     var data = {};
     var sponsoringEvents = [];
-    var actionUrl = "<?php echo base_url() . 'sponsor/page';?>";
+    var actionUrl = "<?php echo $client_base_url . '/sponsor/page';?>";
     var userId = 0;
     var confirmedEmailAddress = false;
 
@@ -280,7 +280,6 @@
                 if(newIndex == 4) {
                     updateSummaryTable();
                 }
-
                 return true;
                 var form;
                 if(currentIndex == 0) {
@@ -356,7 +355,6 @@
                             }, 'json');
                         }
                     }
-                    return true;
                 } else if(currentIndex == 2) {
                     if(newIndex > 2) {
                         form = $('#level-of-sponsorship');

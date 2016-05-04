@@ -51,23 +51,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 //$route['default_controller'] = 'page';
 
-switch ($_SERVER['HTTP_HOST']) {
-    case 'sponsor.skiesinsure.com':
-    case 'sponsor.sdc':
-        $route['login'] = "sponsor/page/login";
-        $route['register'] = "sponsor/page/register";
-        $route['logout'] = "sponsor/page/logout";
-        $route['(:any)'] = "sponsor/$1";
-        $route['(:any)/(:any)'] = 'sponsor/$1/$2';
-        $route['(:any)/(:any)/(:any)'] = 'sponsor/$1/$2/$3';
-        $route['(:any)/(:any)/(:any)/(:any)'] = 'sponsor/$1/$2/$3/$4';
-        break;
+//switch ($_SERVER['HTTP_HOST']) {
+//    case 'sponsor.skiesinsure.com':
+//    case 'sponsor.sdc':
+//        $route['login'] = "sponsor/page/login";
+//        $route['register'] = "sponsor/page/register";
+//        $route['logout'] = "sponsor/page/logout";
+//        $route['(:any)'] = "sponsor/$1";
+//        $route['(:any)/(:any)'] = 'sponsor/$1/$2';
+//        $route['(:any)/(:any)/(:any)'] = 'sponsor/$1/$2/$3';
+//        $route['(:any)/(:any)/(:any)/(:any)'] = 'sponsor/$1/$2/$3/$4';
+//        break;
+//
+//    case 'events.voicesagainstbraincancer.org':
+//    case 'event.sdc':
+//        $route['(:any)'] = "event/$1";
+//        break;
+//}
 
-    case 'events.voicesagainstbraincancer.org':
-    case 'event.sdc':
-        $route['(:any)'] = "event/$1";
-        break;
-}
-$route['default_controller'] = "VABC";
+$route['(:any)'] = 'sponsor/page/login';
+$route['(:any)/sponsor/login'] = 'sponsor/page/login';
+$route['(:any)/sponsor/register'] = 'sponsor/page/register';
+$route['(:any)/sponsor/logout'] = 'sponsor/page/logout';
+
+$route['(:any)/(:any)'] = '$2';
+$route['(:any)/(:any)/(:any)'] = '$2/$3';
+$route['(:any)/(:any)/(:any)/(:any)'] = '$2/$3/$4';
+$route['(:any)/(:any)/(:any)/(:any)/(:any)'] = '$2/$3/$4/$5';
+
+$route['default_controller'] = "SDC";
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

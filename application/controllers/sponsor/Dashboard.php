@@ -8,7 +8,7 @@ class Dashboard extends MY_Controller {
         parent::__construct();
         $user = $this->session->userdata('user');
         if(null == $user) {
-            redirect('/');
+            $this->redirect('/');
         }
     }
 

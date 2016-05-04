@@ -1,25 +1,55 @@
-<div class="row" style="background-color: white; padding: 20px 0;">
+<nav class="navbar navbar-default" style="margin-bottom: 20px;">
     <div class="container">
-        <div class="col-sm-3">
-            <a href="http://www.voicesagainstbraincancer.org/" title="Voices" rel="home"> <img src="http://www.voicesagainstbraincancer.org/wp-content/uploads/2016/01/vabc_logo_landscape_NEW_small-1.png" alt="Voices"></a>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
-        <div class="col-sm-4 col-sm-offset-1">
-            <p style="color: #91a1b4;">
-                <i class="fa fa-envelope-o"></i>
-                EMAIL US AT
-            </p>
-            <a class="vabc-static" href="mailto:info@voicesagainstbraincancer.org" title="Email Us">info@voicesagainstbraincancer.org</a>
-        </div>
-        <div class="col-sm-2">
-            <p style="color: #91a1b4">
-                <i class="fa fa-phone"></i>
-                CALL US NOW
-            </p>
-            <span class="vabc-static">(212) 340-1340 </span>
-        </div>
-        <div class="col-sm-2">
-            <a class="vabc-donate-btn btn" href="http://www.voicesinmotion.org/site/Donation2?df_id=2222&amp;mfc_pref=T&amp;2222.donation=form1" title="DONATE NOW">DONATE NOW</a>
+        <a class="navbar-brand">SPONSOR</a>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav logged-nav">
+                <li>
+                    <a id="nav-dashboard-link" href="<?php echo $client_base_url . '/sponsor/dashboard'; ?>">
+                        <i class="fa fa-dashboard"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a id="nav-events-link" href="<?php echo $client_base_url . '/sponsor/events'; ?>">
+                        <i class="fa fa-calendar-check-o"></i> Events
+                    </a>
+                </li>
+                <li>
+                    <a id="nav-shop-link" href="<?php echo $client_base_url . '/sponsor/shop'; ?>">
+                        <i class="fa fa-shopping-basket"></i> Shop
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" id="nav-user-link" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <?php echo "Welcome, " .  $user->details->company_name; ?> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="<?php echo $client_base_url . '/sponsor/profile'; ?>"><i class="fa fa-user"></i> Profile</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a href="<?php echo $client_base_url . '/sponsor/logout'; ?>">
+                                <i class="fa fa-sign-out"></i> Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
-</div>
+</nav>
 

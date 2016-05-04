@@ -69,7 +69,7 @@
                                         <a class="btn btn-default" href="<?php echo $e->info_link; ?>" target="_blank">View Details</a>
                                     </div>
                                     <div class="col-sm-6 text-right">
-                                        <a href="<?php echo base_url() . "events/guests/" . $e->es_id; ?>" class="btn btn-default"><i class="fa fa-users"></i> My Guests</a>
+                                        <a href="<?php echo $client_base_url . "/sponsor/events/guests/" . $e->es_id; ?>" class="btn btn-default"><i class="fa fa-users"></i> My Guests</a>
                                     </div>
                                 </div>
                             </div>

@@ -8,4 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'org\\bovigo\\vfs' => array($vendorDir . '/mikey179/vfsStream/src/main/php'),
     'Valitron' => array($vendorDir . '/vlucas/valitron/src'),
+    'Mailgun\\Tests' => array($vendorDir . '/mailgun/mailgun-php/tests'),
+    'Mailgun' => array($vendorDir . '/mailgun/mailgun-php/src'),
 );

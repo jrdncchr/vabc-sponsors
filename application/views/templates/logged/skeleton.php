@@ -6,26 +6,17 @@
 </head>
 
 <body>
-<div class="wrapper" style="border-top: 4px solid black;">
+<div class="wrapper" style="padding-bottom: 20px;">
 
-    <div id="wrapper">
+    <?php echo $nav ?>
 
-        <div id="sidebar-wrapper">
-            <?php echo $sidenav; ?>
-        </div>
-
-        <div id="page-content-wrapper">
-            <?php echo $nav; ?>
-            <section id="vabc-content" class="container-fluid" style="padding: 20px;">
-                <?php echo $content; ?>
-            </section>
-        </div>
-
-    </div>
-
+    <section class="container">
+        <?php echo $content; ?>
+    </section>
     <div class="push"></div>
 </div>
 
+<?php echo $footer; ?>
 </body>
 
 </html>

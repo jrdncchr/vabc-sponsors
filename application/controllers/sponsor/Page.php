@@ -18,7 +18,7 @@ class Page extends MY_Controller {
             $this->load->model('user_model');
             $result = $this->user_model->login($auth);
             if($result['success']) {
-                redirect('dashboard');
+                $this->redirect('sponsor/dashboard');
             } else {
                 $this->session->set_flashdata('error', $result['message']);
                 $this->_render('sponsor/login');
@@ -36,7 +36,7 @@ class Page extends MY_Controller {
 
     public function logout() {
         $this->session->sess_destroy();
-        redirect('/');
+        $this->redirect('');
     }
 
     public function save_registration_details() {
@@ -75,16 +75,10 @@ class Page extends MY_Controller {
         $this->load->model('level_model');
         $level = $this->level_model->get(array('level_id' => $level_id));
 
-        if($this->is_localhost()) {
-            $paypal['url'] = "https://www.sandbox.paypal.com/cgi-bin/webscr";
-            $paypal['business'] = "jrdn-sb-business@gmail.com";
-        } else {
-            $paypal['url'] = "https://www.paypal.com/cgi-bin/webscr";
-            $paypal['business'] = "soferamir@gmailc.om";
-        }
-
-        $data = array('events' => $events, 'level' => $level, 'paypal' => $paypal, 'events_sponsoring' => $events_sponsoring);
-        $this->load->view('sponsor/partial/registration_payment', $data);
+        $this->data['events'] = $events;
+        $this->data['level'] = $level;
+        $this->data['events_sponsoring'] = $events_sponsoring;
+        $this->load->view('sponsor/partial/registration_payment', $this->data);
     }
 
     public function payment_success() {

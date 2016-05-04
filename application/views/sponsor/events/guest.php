@@ -96,7 +96,7 @@
 </div>
 
 <script>
-    var actionUrl = "<?php echo base_url() . 'events/action'; ?>";
+    var actionUrl = "<?php echo $client_base_url . '/sponsor/events/action'; ?>";
     var shopEnabled = "<?php echo isset($shop) ? ($shop->enabled == 1 ? true : false) : false; ?>";
     var shopId = "<?php echo isset($shop) ? $shop->shop_id : 0; ?>";
 
