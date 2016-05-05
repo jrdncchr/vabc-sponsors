@@ -13,7 +13,7 @@ class Dashboard extends MY_Controller {
     }
 
 	public function index() {
-        $this->_renderL('sponsor/dashboard/index');
+        $this->_renderSponsor('sponsor/dashboard/index');
 	}
 
 }

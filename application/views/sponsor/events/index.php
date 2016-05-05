@@ -43,13 +43,13 @@
         <?php foreach($events as $e): ?>
             <div class="danero-box" style="margin-bottom: 20px; padding: 0; <?php if($e->status == "completed") { echo "opacity: .7;"; } ?>">
                 <div class="row-eq-height">
-                    <div class="media-img col-sm-5 col-md-4 col-lg-4" style="background-image: url('<?php echo base_url() . "resources/uploads/events/" . $e->image1; ?>'); ">
+                    <div class="media-img col-sm-5 col-md-4 col-lg-4" style="background-image: url('<?php echo base_url() . "resources/uploads/events/" . $e->image1; ?>');">
                     </div>
                     <div class="col-sm-7 col-md-8 col-lg-8 media-content">
                         <div class="media-info" style="margin-bottom: 0">
                             <h2><?php echo $e->name; ?></h2>
                             <p class="block-with-text">
-                                <?php echo $e->description; ?>
+                                <?php echo $e->short_description; ?>
                             </p>
                         </div>
 

@@ -78,6 +78,8 @@ $route['(:any)/(:any)'] = '$2';
 $route['(:any)/(:any)/(:any)'] = '$2/$3';
 $route['(:any)/(:any)/(:any)/(:any)'] = '$2/$3/$4';
 $route['(:any)/(:any)/(:any)/(:any)/(:any)'] = '$2/$3/$4/$5';
+$route['(:any)/(:any)/(:any)/(:any)/(:any)/(:any)'] = '$2/$3/$4/$5/$6';
+$route['(:any)/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)'] = '$2/$3/$4/$5/$6/$7';
 
 $route['default_controller'] = "SDC";
 $route['404_override'] = '';

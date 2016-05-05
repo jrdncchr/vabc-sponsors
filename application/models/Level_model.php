@@ -19,11 +19,13 @@ class Level_model extends CI_Model {
      * GET
      */
     public function get($where) {
+        $where['client_id'] = CLIENT_ID;
         $result = $this->db->get_where($this->tbl, $where);
         return $result->row();
     }
 
     public function get_list($where) {
+        $where['client_id'] = CLIENT_ID;
         $result = $this->db->get_where($this->tbl, $where);
         return $result->result();
     }
@@ -46,6 +48,7 @@ class Level_model extends CI_Model {
             return array('success' => false, 'message' => 'Level Name already exists.', 'field' => 'name');
         }
 
+        $data['client_id'] = CLIENT_ID;
         /* Insert data */
         $this->db->trans_start();
         if($this->db->insert($this->tbl, $data)) {

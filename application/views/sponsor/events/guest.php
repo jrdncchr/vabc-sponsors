@@ -1,8 +1,3 @@
-<style>
-    .event-image {
-        min-height: 200px;;
-    }
-</style>
 <ol class="breadcrumb">
     <li><a href="<?php echo $client_base_url . '/sponsor/events'; ?>">Library</a></li>
     <li class="active"><?php echo $event->name; ?></li>
@@ -20,13 +15,13 @@
                     </div>
                     <div class="form-group">
                         <label for="event-name">Description</label>
-                        <p style="font-size: 13px"><?php echo $event->description; ?></p>
+                        <p style="font-size: 13px"><?php echo $event->short_description; ?></p>
                     </div>
                     <div class="form-group">
                         <label for="event-name">Location</label>
-                        <p><?php echo $event->country . ", " . $event->state . " " . $event->zip; ?></p>
+                        <p><?php echo $event->country . ", " . $event->state_province . " " . $event->zip; ?></p>
                     </div>
-                    <a href="<?php echo $event->info_link; ?>" class="btn btn-default btn-block">Event Detailed Information</a>
+<!--                    <a href="--><?php //echo $event->info_link; ?><!--" class="btn btn-default btn-block">Event Detailed Information</a>-->
                 </div>
             </div>
         </div>
@@ -38,7 +33,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <button class="btn btn-default pull-left"><i class="fa fa-globe"></i> Guest Registration</button>
+                        <a target="_blank" href="<?php echo $client_base_url . '/event/guest/register/' . $event->event_id . '/' . $user->user_id; ?>" class="btn btn-default pull-left"><i class="fa fa-globe"></i> Guest Registration</a>
                         <button class="btn btn-default pull-right" id="invite-btn"><i class="fa fa-user-plus"></i> Invite Guest</button>
                     </div>
                 </div>

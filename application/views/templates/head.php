@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="<?php echo base_url() . 'resources/css/plugins/bootstrap-switch.css'; ?>" />
 <link rel="stylesheet" href="<?php echo base_url() . 'resources/css/plugins/bootstrap-tagsinput.css'; ?>" />
 <link rel="stylesheet" href="<?php echo base_url() . 'resources/css/danero.css'; ?>" />
+<link rel="stylesheet" href="<?php echo base_url() . 'resources/css/sdc.css'; ?>" />
 
 <!-- Scripts -->
 <script src="<?php echo base_url() . 'bower_components/jquery/dist/jquery.min.js'; ?>"></script>

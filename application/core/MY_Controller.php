@@ -77,6 +77,8 @@ class MY_Controller extends CI_Controller {
                         $this->data['client_base_url'] = base_url() . $client_code;
                         $this->client_base_url = base_url() . $client_code;
                         $this->client_code = $client_code;
+                        $this->session->set_userdata('client_id', $client->client_id);
+                        define('CLIENT_ID', $client->client_id);
                         return true;
                     }
                 } else {
@@ -84,6 +86,8 @@ class MY_Controller extends CI_Controller {
                         $this->data['client_base_url'] = base_url() . $client_code;
                         $this->client_base_url = base_url() . $client_code;
                         $this->client_code = $client_code;
+                        $client_id = $this->session->userdata('client_id');
+                        define('CLIENT_ID', $client_id);
                         return true;
                     }
                 }
@@ -109,18 +113,32 @@ class MY_Controller extends CI_Controller {
         $this->load->view('templates/skeleton', $data);
     }
 
-    public function _renderL($view)
+    public function _renderSponsor($view)
     {
         $data = $this->data;
         $data['css'] = $this->css;
         $data['js'] = $this->js;
         $data['bower'] = $this->bower;
         $data['head'] = $this->load->view('templates/head', $data, true);
-        $data['nav'] = $this->load->view('templates/logged/nav', $data, true);
+        $data['nav'] = $this->load->view('templates/sponsor/nav', $data, true);
         $data['footer'] = $this->load->view('templates/footer', $data, true);
         $data['content'] = $this->load->view($view, $data, true);
 
-        $this->load->view('templates/logged/skeleton', $data);
+        $this->load->view('templates/sponsor/skeleton', $data);
+    }
+
+    public function _renderEvent($view)
+    {
+        $data = $this->data;
+        $data['css'] = $this->css;
+        $data['js'] = $this->js;
+        $data['bower'] = $this->bower;
+        $data['head'] = $this->load->view('templates/head', $data, true);
+        $data['nav'] = $this->load->view('templates/event/nav', $data, true);
+        $data['footer'] = $this->load->view('templates/footer', $data, true);
+        $data['content'] = $this->load->view($view, $data, true);
+
+        $this->load->view('templates/event/skeleton', $data);
     }
 
 } 

@@ -48,7 +48,7 @@ input, textarea, select {
     margin-bottom: 0;
 }
 
-.navbar li:hover, .logged-nav a.active, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover  {
+.navbar li:hover, .sdc-nav a.active, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover  {
     text-decoration: none;
     color: #000000;
     font-weight: bold;
@@ -113,6 +113,12 @@ div.un-logged {
     background-color: white;
 }
 
+.event-image {
+    min-height: 300px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+}
 
 .danero-box {
     background: white;
@@ -234,6 +240,13 @@ div.un-logged {
 .btn-yellow {
     background-color: #fbbc05;
     color: #435061;
+    border: none;
+    font-weight: bold;
+}
+
+.btn-dark {
+    background-color: #435061;
+    color: #fbbc05;
     border: none;
     font-weight: bold;
 }

@@ -2,28 +2,27 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Events extends MY_Controller {
+class Guest extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-        $user = $this->session->userdata('user');
-        if(null == $user) {
-            redirect('/');
-        }
         $this->load->model('event_model');
+        $this->load->model('user_model');
     }
 
 	public function index() {
-        $this->data['events'] = $this->event_model->get_event_sponsors($this->user->user_id);
-        $this->_renderSponsor('sponsor/events/index');
+
 	}
 
-    public function guests($event_id) {
+    public function register($event_id, $sponsor_id = 0) {
         $this->data['event'] = $this->event_model->get(array('event_id' => $event_id));
-        $this->_renderSponsor('sponsor/events/guest');
+        if($sponsor_id > 0) {
+            $this->data['sponsor'] = $this->user_model->get_details(array('user.user_id' => $sponsor_id));
+        }
+        $this->_renderEvent('event/guest/register');
     }
 
-    public function action() {
+    public function register_action() {
         $action = $this->input->post('action');
         switch($action) {
             case 'guest_list':

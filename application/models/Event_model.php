@@ -25,11 +25,13 @@ class Event_model extends CI_Model {
      * GET
      */
     public function get($where) {
+        $where['client_id'] = CLIENT_ID;
         $result = $this->db->get_where($this->tbl, $where);
         return $result->row();
     }
 
     public function get_list($where = array()) {
+        $where['client_id'] = CLIENT_ID;
         $result = $this->db->get_where($this->tbl, $where);
         return $result->result();
     }
@@ -52,6 +54,7 @@ class Event_model extends CI_Model {
             return array('success' => false, 'message' => 'Event Name already exists.', 'field' => 'name');
         }
 
+        $data['client_id'] = CLIENT_ID;
         /* Insert data */
         $this->db->trans_start();
         if($this->db->insert($this->tbl, $data)) {
@@ -86,7 +89,7 @@ class Event_model extends CI_Model {
      * Event Sponsors
      */
     public function get_event_sponsors($user_id) {
-        $this->db->select('event.event_id, event.name, event.description, event.info_link, event.image1, event.status, event_sponsors.es_id');
+        $this->db->select('event.event_id, event.name, event.short_description, event.info_link, event.image1, event.status, event_sponsors.es_id');
         $this->db->from($this->tbl);
         $this->db->join($this->event_sponsors_tbl,
             "event_sponsors.event_id = event.event_id AND event_sponsors.sponsor_id = $user_id AND event_sponsors.status = 'active'", 'left');

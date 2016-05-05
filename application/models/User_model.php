@@ -49,11 +49,21 @@ class User_model extends CI_Model {
      * GET
      */
     public function get($where) {
+        $where['client_id'] = CLIENT_ID;
         $result = $this->db->get_where($this->tbl, $where);
         return $result->row();
     }
 
+    public function get_details($where) {
+        $where['client_id'] = CLIENT_ID;
+        $this->db->join($this->sponsor_tbl, 'sponsor.user_id = user.user_id', 'left');
+        $this->db->join($this->social_links_tbl, 'social_link.user_id = user.user_id', 'left');
+        $sponsor = $this->db->get($this->tbl, $where);
+        return $sponsor->row();
+    }
+
     public function get_all($where) {
+        $where['client_id'] = CLIENT_ID;
         $result = $this->db->get_where($this->tbl, $where);
         return $result->result();
     }
@@ -93,6 +103,7 @@ class User_model extends CI_Model {
         $user_id = null;
 
         /* Insert user info */
+        $user['client_id'] = CLIENT_ID;
         $this->db->trans_start();
         if($this->db->insert($this->tbl, $user)) {
 

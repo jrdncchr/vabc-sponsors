@@ -18,7 +18,7 @@ class Shop extends MY_Controller {
         if($shop) {
             $this->data['shop'] = $shop;
         }
-        $this->_renderL('sponsor/shop/index');
+        $this->_renderSponsor('sponsor/shop/index');
 	}
 
     public function action() {

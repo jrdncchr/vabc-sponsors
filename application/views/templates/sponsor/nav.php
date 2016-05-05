@@ -13,7 +13,7 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
-            <ul class="nav navbar-nav logged-nav">
+            <ul class="nav navbar-nav sdc-nav">
                 <li>
                     <a id="nav-dashboard-link" href="<?php echo $client_base_url . '/sponsor/dashboard'; ?>">
                         <i class="fa fa-dashboard"></i> Dashboard
