@@ -123,7 +123,7 @@
 <script>
     var actionUrl = "<?php echo $client_base_url . '/sponsor/events/action'; ?>";
     var shopEnabled = "<?php echo isset($shop) ? ($shop->enabled == 1 ? true : false) : false; ?>";
-    var shopId = "<?php echo isset($shop) ? $shop->shop_id : 0; ?>";
+    var eventId = "<?php echo isset($event) ? $event->event_id : 0; ?>";
 
     $(function() {
         $('#nav-events-link').addClass('active');
@@ -148,7 +148,7 @@
             ajax: {
                 type: "POST",
                 url: actionUrl,
-                data: {action: "guest_list"}
+                data: {action: "guest_list", event_id: eventId}
             },
             columns: [
                 {data: "name", width: "40%"},
@@ -164,6 +164,9 @@
                     var data = table.fnGetData(pos);
                     showGuestInfo(data);
                 });
+            },
+            "language": {
+                "emptyTable": "No guest yet."
             }
         });
 

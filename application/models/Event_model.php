@@ -99,6 +99,19 @@ class Event_model extends CI_Model {
         return $result->result();
     }
 
+    public function add_event_sponsors($es) {
+        $this->db->trans_start();
+        if($this->db->insert($this->event_sponsors_tbl, $es)) {
+            if ($this->db->trans_status() === FALSE) {
+                $this->db->trans_rollback();
+            } else {
+                $this->db->trans_commit();
+                return array('success' => true);
+            }
+        }
+        return array('success' => false);
+    }
+
     /*
      * Event Sponsors Guests
      */

@@ -34,7 +34,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" id="nav-user-link" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <?php echo "Welcome, " .  $user->details->company_name; ?> <i class="fa fa-caret-down"></i>
+                        <?php echo "Welcome, " .  $user->company_name; ?> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu">
                         <li>

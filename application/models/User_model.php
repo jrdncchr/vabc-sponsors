@@ -26,16 +26,13 @@ class User_model extends CI_Model {
     public function login(array $auth) {
         $result = array('success' => false,  'message' => 'Incorrect Email or Password.');
         if(isset($auth['email']) && isset($auth['password'])) {
-            $user_result = $this->db->get($this->tbl, array('email' => $auth['email']));
+            $user_result = $this->db->get_where($this->tbl, array('email' => $auth['email']));
             if($user_result->num_rows() > 0) {
                 $user = $user_result->row();
-                $user_secret_result = $this->db->get($this->secret_tbl, array('user_id' => $user->user_id));
+                $user_secret_result = $this->db->get_where($this->secret_tbl, array('user_id' => $user->user_id));
                 $user_secret = $user_secret_result->row();
                 if (hash_equals($user_secret->password, crypt($auth['password'], $user_secret->password))) {
-                    $sponsor = $this->db->get($this->sponsor_tbl, array('user_id', $user->user_id));
-                    $user->details = $sponsor->row();
-                    $social_link = $this->db->get($this->social_links_tbl, array('user_id', $user->user_id));
-                    $user->social_links = $social_link->row();
+                    $user = $this->get_details(array('user.user_id' => $user->user_id));
                     $result = array('success' => true);
                     $_SESSION['user'] = $user;
                     $this->session->set_userdata('user', $user);
@@ -58,7 +55,7 @@ class User_model extends CI_Model {
         $where['client_id'] = CLIENT_ID;
         $this->db->join($this->sponsor_tbl, 'sponsor.user_id = user.user_id', 'left');
         $this->db->join($this->social_links_tbl, 'social_link.user_id = user.user_id', 'left');
-        $sponsor = $this->db->get($this->tbl, $where);
+        $sponsor = $this->db->get_where($this->tbl, $where);
         return $sponsor->row();
     }
 
@@ -111,7 +108,7 @@ class User_model extends CI_Model {
             $user_secret = array(
                 'password' => $password,
                 'user_id' => $user_id,
-                'email_confirmation' => $this->general_functions->generate_random_str(50)
+                'email_confirmation' => $this->general_functions->generate_random_str(15, true)
             );
             /* Insert user secret */
             if($this->db->insert($this->secret_tbl, $user_secret)) {

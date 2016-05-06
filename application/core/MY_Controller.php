@@ -14,6 +14,7 @@ class MY_Controller extends CI_Controller {
     protected $description = "Hutarian - Sponsorship - Sponsors";
     protected $keywords = "Hutarian - Sponsorship - Sponsors";
     protected $author = "Danero";
+    protected $stripe;
 
     public function __construct($logged = false)
     {
@@ -45,16 +46,26 @@ class MY_Controller extends CI_Controller {
     {
         $localhost = array('127.0.0.1', '::1', 'sponsors.sdc');
         if(in_array($_SERVER['REMOTE_ADDR'], $localhost)) {
+            $this->stripe = array(
+                "secret_key"      => "sk_test_pamZzG9V4Zm7QhkenF8IGZrf",
+                "publishable_key" => "pk_test_61MXzXFzVMcUWGMcvDvJCIn1"
+            );
             define('PAYPAL_URL', 'https://www.sandbox.paypal.com/cgi-bin/webscr');
             define('PAYPAL_BUSINESS', 'jrdn-sb-business@gmail.com');
             define('MAILGUN_API', 'key-0a22dc9b70f19379be7b3d0b589597d7');
             define('MAILGUN_DOMAIN', 'sandbox42bb7fca122043d4a2db264e4d5c6167.mailgun.org');
         } else {
+            $this->stripe = array(
+                "secret_key"      => "sk_test_pamZzG9V4Zm7QhkenF8IGZrf",
+                "publishable_key" => "pk_test_61MXzXFzVMcUWGMcvDvJCIn1"
+            );
             define('PAYPAL_URL', 'https://www.paypal.com/cgi-bin/webscr');
             define('PAYPAL_BUSINESS', 'soferamir@gmail.com');
             define('MAILGUN_API', 'key-0a22dc9b70f19379be7b3d0b589597d7');
             define('MAILGUN_DOMAIN', 'sandbox42bb7fca122043d4a2db264e4d5c6167.mailgun.org');
         }
+
+        \Stripe\Stripe::setApiKey($this->stripe['secret_key']);
     }
 
     /* Check the first segment which is the client code. If exists, it will create the client base url,

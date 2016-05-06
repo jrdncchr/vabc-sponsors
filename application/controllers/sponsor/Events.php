@@ -27,7 +27,8 @@ class Events extends MY_Controller {
         $action = $this->input->post('action');
         switch($action) {
             case 'guest_list':
-                $list = $this->event_model->get_event_sponsors_guests(1, 2);
+                $list = $this->event_model->get_event_sponsors_guests(
+                    $this->input->post('event_id'), $this->user->user_id);
                 echo json_encode(array('data' => $list));
                 break;
             default:

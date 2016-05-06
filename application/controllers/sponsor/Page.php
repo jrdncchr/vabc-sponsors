@@ -63,30 +63,76 @@ class Page extends MY_Controller {
         $events = $this->input->post('events');
         $level_id = $this->input->post('level_id');
         $user_id = $this->input->post('user_id');
+
+        $this->load->model('level_model');
+        $level = $this->level_model->get(array('level_id' => $level_id));
+        $price_total = 0;
+
         $this->load->model('event_model');
-        $events_sponsoring = "user_id=$user_id&level_id=$level_id&events=";
+        $events_sponsoring = "&user_id=$user_id&level_id=$level_id&events=";
         for($i = 0; $i < sizeof($events); $i++) {
             $events_sponsoring .= $events[$i];
             if(($i+1) != sizeof($events)) {
                 $events_sponsoring .= "|";
             }
             $events[$i] = $this->event_model->get(array('event_id' => $events[$i]));
+            $price_total += $level->price;
         }
+        $events_sponsoring .= "&price_total=$price_total";
+        $this->session->set_userdata('event_sponsoring', $events_sponsoring);
         $this->load->model('level_model');
         $level = $this->level_model->get(array('level_id' => $level_id));
 
+        $this->data['stripe'] = $this->stripe;
+        $this->data['price_total'] = $price_total;
         $this->data['events'] = $events;
         $this->data['level'] = $level;
         $this->data['events_sponsoring'] = $events_sponsoring;
         $this->load->view('sponsor/partial/registration_payment', $this->data);
     }
 
-    public function payment_success() {
+    public function payment_success_paypal() {
         $status = $this->input->post('payment_status');
         if($status == "Completed") {
              parse_str($this->input->post('custom'), $event_sponsoring);
             var_dump($event_sponsoring);
         }
+    }
+
+    public function payment_checkout_stripe() {
+        $token = $this->input->post('stripeToken');
+
+        $event_sponsoring = $this->session->userdata('event_sponsoring');
+        parse_str($event_sponsoring, $event_sponsoring);
+
+        $customer = \Stripe\Customer::create(array(
+            'email' => $this->input->post('stripeEmail'),
+            'card'  => $token
+        ));
+
+        $charge = \Stripe\Charge::create(array(
+            'customer' => $customer->id,
+            'amount'   => $event_sponsoring['price_total'] * 100,
+            'currency' => 'usd'
+        ));
+
+        $events = explode('|', $event_sponsoring['events']);
+        $this->load->model('event_model');
+        foreach($events as $e) {
+            $es = array(
+                'event_id' => $e,
+                'sponsor_id' => $event_sponsoring['user_id'],
+                'level_id' => $event_sponsoring['level_id'],
+            );
+            $this->event_model->add_event_sponsors($es);
+        }
+
+        $this->load->model('user_model');
+        $user = $this->user_model->get_details(array('user.user_id' => $event_sponsoring['user_id']));
+        $_SESSION['user'] = $user;
+        $this->session->set_userdata('user', $user);
+        redirect($this->client_base_url . '/sponsor/dashboard');
+
     }
 
 }

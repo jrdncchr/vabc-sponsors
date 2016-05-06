@@ -40,3 +40,15 @@ function numberWithCommas(x) {
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return parts.join(".");
 }
+
+var toast;
+function loading(type, message) {
+    toastr.clear(toast);
+    if (type === "success") {
+        toast = toastr.success(message);
+    } else if (type === "info") {
+        toast = toastr.info(message);
+    } else if (type === "danger") {
+        toast = toastr.error(message);
+    }
+}
